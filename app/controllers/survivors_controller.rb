@@ -3,9 +3,10 @@ class SurvivorsController < ApplicationController
 
   # GET /survivors
   def index
-    @survivors = Survivor.all
+    @survivors = Survivor.order(:name)
 
-    render json: @survivors
+    render json: @survivors 
+    render json:  Survivor.count
   end
 
   # GET /survivors/1
