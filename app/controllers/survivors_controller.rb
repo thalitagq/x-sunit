@@ -6,7 +6,7 @@ class SurvivorsController < ApplicationController
     @survivors = Survivor.order(:name)
 
     render json: @survivors 
-    render json:  Survivor.count
+   
   end
 
   # GET /survivors/1
@@ -18,8 +18,10 @@ class SurvivorsController < ApplicationController
   def create
     @survivor = Survivor.new(survivor_params)
 
+
     if @survivor.save
       render json: @survivor, status: :created, location: @survivor
+      @abduction_report = AbductionReport.new()
     else
       render json: @survivor.errors, status: :unprocessable_entity
     end

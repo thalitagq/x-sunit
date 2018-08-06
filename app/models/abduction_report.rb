@@ -5,9 +5,9 @@ class AbductionReport < ApplicationRecord
 
 	#uptade survivors' table when abduction_reports is updated
 	def update_survivor
-	survivor = Survivor.find(self.id)
-	amount = AbductionReport.find(self.id).amount	
-	survivor.update!(abduction_reports: amount)
+		survivor = Survivor.find(self.id)
+		amount = AbductionReport.find(self.id).amount	
+		survivor.update!(abduction_reports: amount)
 	end
 
 	def check_abduction

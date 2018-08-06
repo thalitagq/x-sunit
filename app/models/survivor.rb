@@ -1,16 +1,11 @@
 class Survivor < ApplicationRecord
 	has_one :abduction_report
-	#after_update :percentage_abduced #:percentage_non_abduced
-	#after_find :percentage_abduced #:percentage_non_abduced
-	
+	before_create :create_report_object
 
-	#def percentage_abduced
-	#	total = Survivor.count
-	#	abduced = ('where((SELECT Count(*) FROM survivors WHERE abduced = true)')
-		
-		#percentage = (abduced*100)/total
+	def create_report_object
+    	new_report_object = AbductionReport.new()
+		new_report_object.id = self.id 
+		new_report_object.create()
+  end
 
-		
-		
-	#end
 end
